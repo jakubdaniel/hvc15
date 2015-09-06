@@ -1,0 +1,284 @@
+\pdfminorversion=4
+
+\documentclass{beamer}
+
+\usepackage{color}
+\usepackage{colortbl}
+\usepackage{multirow}
+\usepackage{pifont}
+\usepackage{listings}
+
+\input algorithm
+
+\newcolumntype{L}{>{\vbox\bgroup\vskip0.75ex\hbox\bgroup\hskip0.25ex}l<{\hskip0.25ex\egroup\egroup}}
+\newcolumntype{R}{>{\vbox\bgroup\vskip0.75ex\hbox\bgroup\hskip0.25ex}r<{\hskip0.25ex\egroup\egroup}}
+\newcommand{\crossmark}{\ding{55}}
+
+%\def\event{{D3S Seminar}}
+%\def\date{{2014-09-23}}
+
+\usetheme[footlineauthor]{D3S}
+
+\fancytitle{\vbox{\Huge{}P\huge{}ANDA \\ \large{}Predicate Abstraction in Dynamic Analysis}}
+\runningtitle{PANDA: Predicate Abstraction in Dynamic analysis}
+
+\author{Jakub Daniel}
+
+\begin{document}
+  %\titleframe
+
+  \subtitleframe{
+      \vskip4em
+      {\Huge{}P\huge{}ANDA} \\
+      \vskip0.5em
+      \large Simultaneous Predicate Abstraction and Concrete Execution
+      \vskip6em
+      \Huge
+      \vbox{\tt{}o - o\\\vskip-0.35em(0\_0)}
+  }
+
+  \subtitleframe{
+      \ldots but first \ldots
+  }
+
+  \subtitleframe{
+      Charles University \\
+      \scriptsize since 1348, Prague, Czech Republic \\
+      \vskip1em
+      \small
+      $$
+      \begin{array}{rlcc}
+        17 & \text{Faculties}   &\ni& \text{Faculty of Mathematics and Physics} \\
+         3 & \text{Schools}     &\ni& \text{School of Computer Science} \\
+         8 & \text{Departments} &\ni& \text{Department of Distributed and Dependable Systems} \\
+       \\
+         3 & \text{Groups}      &\ni& \text{Component Group} \\
+           &                    &\ni& \text{Systems Group} \\
+           &                    &\ni& \textbf{Formal Methods Group} \\
+      \end{array}
+      $$
+  }
+
+  \subtitleframe{
+      Component Group \\
+      \vskip0.5em
+      \small Currently focusing on Cyber-Physical Systems
+  }
+
+  \subtitleframe{\Large Dependable Emergent Ensembles of Components (DEECo) \\
+      \small
+      \begin{itemize}
+        \item design of systems of autonomous, self-aware, and adaptable components
+        \item implicitly organized in groups called ensembles
+        \item dynamic environment (components enter/exit ensembles at any time)
+        \item car parking, firefighters
+        \item \url{https://github.com/d3scomp} - CDEECo, JDEECo, IRM
+        \item \scriptsize Bures et al. DEECo - an Ensemble-Based Component System. CBSE'13\\
+      \end{itemize}
+  }
+
+  \subtitleframe{
+      Systems Group \\
+      \vskip0.5em
+      \small Performance
+  }
+  \subtitleframe{\Large Garbage Collector Performance \\
+      \small
+      \begin{itemize}
+        \item \scalebox{0.9}{\scriptsize Libic et al. On The Limits of Modeling Generational Garbage Collector Performance. ICPE'14}\\
+      \end{itemize}
+  }
+  \subtitleframe{\Large Performance Unit Tests \\ \small Stochastic Performance Logic \\
+      \vskip0.5em
+      \begin{itemize}
+        \item \scalebox{0.9}{\scriptsize Horky et al. Utilizing Performance Unit Tests To Increase Performance Awareness. ICPE'15}\\
+      \end{itemize}
+  }
+  \subtitleframe{\Large Domain-Specific Language for Bytecode Instrumentation \\
+      \small
+      \begin{itemize}
+        \item \scriptsize Marek et al. DiSL: Domain-Specific Language for Bytecode Instrumentation. AOSD'12\\
+      \end{itemize}
+  }
+
+  \subtitleframe{Formal Methods Group}
+  \subtitleframe{\Large Weverca \\
+      \small
+      \begin{itemize}
+        \item PHP static analyzer
+        \item Live Demo \url{http://perun.ms.mff.cuni.cz/weverca}
+        \item \scriptsize Hauzar, Kofron. Framework for Static Analysis of PHP Applications. ECOOP'15\\
+      \end{itemize}
+  }
+  \subtitleframe{\Large Partial Variable Assignment Interpolants \\
+      \small
+      \begin{itemize}
+        \item \scriptsize Jancik et al. On Interpolants and Variable Assignments. FMCAD'14\\
+      \end{itemize}
+  }
+  \subtitleframe{\Large Partial State Matching \\
+      \small
+      \begin{itemize}
+        \item \ldots
+      \end{itemize}
+  }
+  \subtitleframe{\Large Improving Partial Order Reduction \\
+      \small
+      combination of static and dynamic analysis
+      \vskip0.5em
+      \begin{itemize}
+        \item {\scriptsize Parizek, Lhotak. Identifying Future Field Accesses in Exhaustive State Space Traversal. ASE'11}\\
+        \item {\scriptsize Parizek, Jancik. Approximating Happens-Before Order: Interplay between Static Analysis and State Space Traversal. SPIN'14}\\
+      \end{itemize}
+  }
+  \subtitleframe{%
+    \vskip2.5em
+    {\Huge{}P\huge{}ANDA} \scriptsize\\
+    {\tiny Pradicate Abstraction in Dynamic Analysis} \\
+    \vskip0.5em
+    {\small\color{darkgray}\url{https://github.com/d3sformal/panda}} \small\\
+    {\scriptsize{}based on \color{darkgray}\url{http://babelfish.arc.nasa.gov/trac/jpf}} \\
+    \vskip2em
+    \color{darkgray}
+    \huge dynamic analysis \hbox to 3.5cm{\hsize=3.5cm\vbox{\small concrete execution \\ predicate abstraction}} \\
+    {\large concrete underapproximation} {\small gives} {\LARGE precision} \\
+    {\LARGE soundness} {\small thanks to} {\large overapproximation} \\
+  }
+
+  \subtitleframe{\ldots}
+
+  \begin{frame}{Concrete state space traversal}
+    \begin{columns}[T]
+      \begin{column}{0.45\textwidth}
+        \begin{itemize}
+          \item some feasible traces
+          \item no infeasible traces
+          \item high precision
+        \end{itemize}
+      \end{column}
+      \begin{column}{0.45\textwidth}
+        \includegraphics[keepaspectratio,height=5.5cm]{slides1}
+      \end{column}
+    \end{columns}
+    \vbox to 1cm{
+      \scriptsize
+      \includegraphics[keepaspectratio,height=0.25cm]{slides5}\hskip1ex Concrete trace
+    }
+  \end{frame}
+
+  \begin{frame}{Abstract state space traversal}
+    \begin{columns}[T]
+      \begin{column}{0.45\textwidth}
+        \begin{itemize}
+          \item all feasible traces
+          \item some infeasible traces
+          \item cone of concrete traces % to be considered % unlike BMC, symbolic execution, concolic testing
+        \end{itemize}
+      \end{column}
+      \begin{column}{0.45\textwidth}
+        \includegraphics[keepaspectratio,height=5.5cm]{slides2}
+      \end{column}
+    \end{columns}
+    \vbox to 1cm{
+      \scriptsize
+      \includegraphics[keepaspectratio,height=0.25cm]{slides5}\hskip1ex Concrete trace \\
+      \includegraphics[keepaspectratio,height=0.25cm]{slides3}\hskip1ex Reachable with {\bf precise} abstraction \\
+      \includegraphics[keepaspectratio,height=0.25cm]{slides4}\hskip1ex Reachable with {\bf coarse} abstraction \\
+    }
+  \end{frame}
+
+  {
+    \setbeamertemplate{headline}{}
+    \setbeamertemplate{frametitle}{}
+    \setbeamertemplate{footline}{}
+    \begin{frame}
+      \vskip-1cm
+      \vtop to \vsize {
+        \only<1-4,6->{\strut{}Current state
+          {\tt%
+            \only<1>{$\text{s}_\text{1}$}%
+            \only<2>{$\text{s}_\text{2}$}%
+            \only<3>{$\text{s}_\text{3}$}%
+            \only<4>{$\text{s}_\text{4}$}%
+            \only<6>{$\text{s}_\text{3}'$}%
+            \only<7>{$\text{s}_\text{5}$}%
+          }%
+          \only<3>{, trace formula
+            {\tt%
+              \only<1>{$\varphi_\text{1}$}%
+              \only<2>{$\varphi_\text{2}$}%
+              \only<3>{$\varphi_\text{3}$}%
+              \only<4>{$\varphi_\text{4}$}%
+              \only<6>{$\varphi_\text{3}$}%
+              \only<7>{$\varphi_\text{5}$}%
+            }
+          }
+        }%
+        \only<5>{\strut{}Backtracking over {\tt$\text{s}_\text{3}$} back to {\tt$\text{s}_\text{2}$}}%
+        \\
+        \begin{center}
+          \includegraphics<1>{slides6}
+          \includegraphics<2>{slides7}
+          \includegraphics<3>{slides8}
+          \includegraphics<4>{slides9}
+          \includegraphics<5>{slides10}
+          \includegraphics<6>{slides11}
+          \includegraphics<7>{slides12}
+        \end{center}
+      }
+    \end{frame}
+  }
+
+  \begin{frame}{Example Program}
+    \lstinputlisting[basicstyle=\scriptsize\tt,language=Java,linerange={3-19}]{ArrayMin.java}
+    \strut%
+  \end{frame}
+
+  \begin{frame}{Example Program}
+    \lstinputlisting[basicstyle=\scriptsize\tt,language=Java]{ArrayMinStepByStep.java}
+    \strut%
+    \only<1-11>{\hbox to \hsize{\hfill{\scriptsize\color{darkblue}\tt\bfseries{SIZE = 1, array.length = SIZE, \only<2>{\bgroup\color{gray}}\only<7,11>{\bgroup\color{darkred}}j = 0\only<7,11>{\egroup}\only<2>{\egroup}, \btHL<7,11>{\only<2-6,8-9>{\bgroup\color{gray}}\only<7,11>{\bgroup\color{darkred}}array[0] < min\only<7,11>{\egroup}\only<2-6,8-9>{\egroup}}}}\hfill}}%
+    \only<12>{\hbox to \hsize{\hfill{\color{darkgreen}\bfseries{Program Safe}}\hfill}}%
+  \end{frame}
+
+  \begin{frame}{Evaluation - HVC'15}
+    \def\fst{\cellcolor{orange}}
+    \def\avg{\cellcolor{orange!30}}
+    \begin{center}
+      \scalebox{0.65}{
+        \begin{tabular}{ L || R R R R R R R R }
+        %\hline
+        \multicolumn{1}{ c ||}{\multirow{2}{*}{ Benchmark }} & \multicolumn{4}{ c }{P\footnotesize{}ANDA} & \multirow{2}{*}{B\footnotesize{}LAST} & \multirow{2}{*}{CPA\footnotesize{}CHECKER} & \multirow{2}{*}{U\footnotesize{}FO} & \multirow{2}{*}{W\footnotesize{}OLVERINE} \\
+        %\cline{2-5}
+        \multicolumn{1}{ c ||}{}                             & \multicolumn{1}{ c }{ $t$ } & \multicolumn{1}{ c }{ $|S|$ } & \multicolumn{1}{ c }{ $|abs|$ } & \multicolumn{1}{ c }{ \#sat } & & & & \\
+        \hline
+        Array                        &        3 s &  29 &  7 &  1809 &             7 s &             2 s &             1 s &             1 s \\
+        Eureka 01                    & \fst  25 s & 741 & 53 & 11462 & \fst \crossmark & \fst \crossmark & \fst \crossmark & \fst    timeout \\
+        TREX 03                      &        8 s &  53 &  6 &  1885 &      \crossmark &      \crossmark &             1 s &             1 s \\
+        Invert string                & \avg   6 s & 126 & 18 &  3103 & \avg \crossmark & \avg        6 s & \avg \crossmark & \avg       13 s \\
+        Password                     &        4 s & 130 & 19 &  2211 &            60 s &             3 s &      \crossmark &             5 s \\
+        Reverse array                & \avg   3 s & 113 & 17 &  2049 & \avg \crossmark & \avg        3 s & \avg \crossmark & \avg        3 s \\
+        Two indices                  &        2 s &  33 & 15 &  1777 &      \crossmark &             2 s &      \crossmark &             1 s \\
+        Data-flow analysis${}^\star$ & \fst 117 s & 358 & 63 &  8458 & \fst \crossmark & \fst \crossmark & \fst \crossmark & \fst \crossmark \\
+        Cycling race${}^\star$       &        4 s &  87 & 28 &  2283 &             5 s &             3 s &             2 s &             3 s \\
+        Image rendering${}^\star$    &      260 s & 664 & 13 &  6235 &             1 s &            46 s &      \crossmark &      \crossmark \\
+        Scheduler${}^\star$          & \avg   4 s &  59 & 27 &  2115 & \avg       26 s & \avg        4 s & \avg \crossmark & \avg        5 s \\
+        \end{tabular}
+      }
+      \vskip2em
+      {\tiny\sf SVCOMP'14 and our examples (${}^\star$)}
+    \end{center}
+  \end{frame}
+
+  \begin{frame}{Future}
+    \begin{itemize}
+      \item Abstract state matching
+      \item Concrete trace discontinuities
+      \item Data structures / Containers
+      \item Concurrency
+    \end{itemize}
+  \end{frame}
+
+  %\subtitleframe{\raisebox{-0.5\height}{\includegraphics[width=8cm]{kunfupanda.jpg}}Questions?}
+
+\end{document}
