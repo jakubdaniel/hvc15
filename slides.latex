@@ -267,6 +267,7 @@
 
   \begin{frame}{Future}
     \begin{itemize}
+      \item Optimize
       \item Abstract state matching
       \item Concrete trace discontinuities
       \item Data structures / Containers
