@@ -85,19 +85,30 @@
   \subtitleframe{\Large Garbage Collector Performance \\
       \small
       \begin{itemize}
-        \item \scalebox{0.9}{\scriptsize Libic et al. On The Limits of Modeling Generational Garbage Collector Performance. ICPE'14}\\
+        \item {\scriptsize Libic et al. Estimating the Impact of Code Additions on GC Overhead. EPEW'15}\\
+        \item {\scriptsize Libic et al. On The Limits of Modeling Generational GC Performance. ICPE'14}\\
       \end{itemize}
   }
   \subtitleframe{\Large Performance Unit Tests \\ \small Stochastic Performance Logic \\
       \vskip0.5em
       \begin{itemize}
-        \item \scalebox{0.9}{\scriptsize Horky et al. Utilizing Performance Unit Tests To Increase Performance Awareness. ICPE'15}\\
+        \item \url{http://sourceforge.net/projects/spl-tools/}
+        \item {\scriptsize Horky et al. Utilizing Performance Unit Tests To Increase Performance Awareness. ICPE'15}\\
+        \item {\scriptsize Bulej et al. Capturing Performance Assumptions using SPL. ICPE'12}\\
       \end{itemize}
+      \lstinputlisting[basicstyle=\scriptsize\tt,language=Java]{SPL.java}
   }
   \subtitleframe{\Large Domain-Specific Language for Bytecode Instrumentation \\
       \small
       \begin{itemize}
-        \item \scriptsize Marek et al. DiSL: Domain-Specific Language for Bytecode Instrumentation. AOSD'12\\
+        \item ShadowVM
+          \begin{itemize}
+            \item isolation
+            \item full coverage
+            \item dynamic analysis via instrumentation
+          \end{itemize}
+        \item {\scriptsize Marek et al. ShadowVM: Robust and Comprehensive Dynamic Program Analysis for Java Platform. GPCE'13}\\
+        \item {\scriptsize Marek et al. DiSL: Domain-Specific Language for Bytecode Instrumentation. AOSD'12}\\
       \end{itemize}
   }
 
@@ -113,13 +124,19 @@
   \subtitleframe{\Large Partial Variable Assignment Interpolants \\
       \small
       \begin{itemize}
-        \item \scriptsize Jancik et al. On Interpolants and Variable Assignments. FMCAD'14\\
+        \item Propositional DAG interpolation
+        \item {\scriptsize Jancik et al. On Interpolants and Variable Assignments. FMCAD'14}\\
       \end{itemize}
   }
   \subtitleframe{\Large Partial State Matching \\
       \small
       \begin{itemize}
-        \item \ldots
+        \item Parts of state relevant for future behaviour
+            \begin{itemize}
+              \item Different for every point
+              \item Variables and fields read before being overwritten
+            \end{itemize}
+        \item Match relevant parts only
       \end{itemize}
   }
   \subtitleframe{\Large Improving Partial Order Reduction \\
@@ -145,7 +162,15 @@
     {\LARGE soundness} {\small thanks to} {\large overapproximation} \\
   }
 
-  \subtitleframe{\ldots}
+  \subtitleframe{
+      \small
+      \begin{itemize}
+        \item Depth-first search state space traversal
+        \item Parallel concrete and abstract execution
+              \hfill{\scriptsize\color{darkgray} à la Concolic execution but not quite}
+        \item Lazy abstraction with Nested Interpolants \\
+      \end{itemize}
+  }
 
   \begin{frame}{Concrete state space traversal}
     \begin{columns}[T]
@@ -187,46 +212,16 @@
     }
   \end{frame}
 
-  {
-    \setbeamertemplate{headline}{}
-    \setbeamertemplate{frametitle}{}
-    \setbeamertemplate{footline}{}
-    \begin{frame}
-      \vskip-1cm
-      \vtop to \vsize {
-        \only<1-4,6->{\strut{}Current state
-          {\tt%
-            \only<1>{$\text{s}_\text{1}$}%
-            \only<2>{$\text{s}_\text{2}$}%
-            \only<3>{$\text{s}_\text{3}$}%
-            \only<4>{$\text{s}_\text{4}$}%
-            \only<6>{$\text{s}_\text{3}'$}%
-            \only<7>{$\text{s}_\text{5}$}%
-          }%
-          \only<3>{, trace formula
-            {\tt%
-              \only<1>{$\varphi_\text{1}$}%
-              \only<2>{$\varphi_\text{2}$}%
-              \only<3>{$\varphi_\text{3}$}%
-              \only<4>{$\varphi_\text{4}$}%
-              \only<6>{$\varphi_\text{3}$}%
-              \only<7>{$\varphi_\text{5}$}%
-            }
-          }
-        }%
-        \only<5>{\strut{}Backtracking over {\tt$\text{s}_\text{3}$} back to {\tt$\text{s}_\text{2}$}}%
-        \\
-        \begin{center}
-          \includegraphics<1>{slides6}
-          \includegraphics<2>{slides7}
-          \includegraphics<3>{slides8}
-          \includegraphics<4>{slides9}
-          \includegraphics<5>{slides10}
-          \includegraphics<6>{slides11}
-          \includegraphics<7>{slides12}
-        \end{center}
-      }
-    \end{frame}
+  \subtitleframe{
+      \begin{center}
+        \includegraphics<1>{slides6}
+        \includegraphics<2>{slides7}
+        \includegraphics<3>{slides8}
+        \includegraphics<4>{slides9}
+        \includegraphics<5>{slides10}
+        \includegraphics<6>{slides11}
+        \includegraphics<7>{slides12}
+      \end{center}
   }
 
   \begin{frame}{Example Program}
@@ -241,7 +236,7 @@
     \only<12>{\hbox to \hsize{\hfill{\color{darkgreen}\bfseries{Program Safe}}\hfill}}%
   \end{frame}
 
-  \begin{frame}{Evaluation - HVC'15}
+  \begin{frame}{HVC'15 Evaluation}
     \def\fst{\cellcolor{orange}}
     \def\avg{\cellcolor{orange!30}}
     \begin{center}
@@ -252,17 +247,17 @@
         %\cline{2-5}
         \multicolumn{1}{ c ||}{}                             & \multicolumn{1}{ c }{ $t$ } & \multicolumn{1}{ c }{ $|S|$ } & \multicolumn{1}{ c }{ $|abs|$ } & \multicolumn{1}{ c }{ \#sat } & & & & \\
         \hline
-        Array                        &        3 s &  29 &  7 &  1809 &             7 s &             2 s &             1 s &             1 s \\
-        Eureka 01                    & \fst  25 s & 741 & 53 & 11462 & \fst \crossmark & \fst \crossmark & \fst \crossmark & \fst    timeout \\
-        TREX 03                      &        8 s &  53 &  6 &  1885 &      \crossmark &      \crossmark &             1 s &             1 s \\
-        Invert string                & \avg   6 s & 126 & 18 &  3103 & \avg \crossmark & \avg        6 s & \avg \crossmark & \avg       13 s \\
-        Password                     &        4 s & 130 & 19 &  2211 &            60 s &             3 s &      \crossmark &             5 s \\
-        Reverse array                & \avg   3 s & 113 & 17 &  2049 & \avg \crossmark & \avg        3 s & \avg \crossmark & \avg        3 s \\
-        Two indices                  &        2 s &  33 & 15 &  1777 &      \crossmark &             2 s &      \crossmark &             1 s \\
-        Data-flow analysis${}^\star$ & \fst 117 s & 358 & 63 &  8458 & \fst \crossmark & \fst \crossmark & \fst \crossmark & \fst \crossmark \\
-        Cycling race${}^\star$       &        4 s &  87 & 28 &  2283 &             5 s &             3 s &             2 s &             3 s \\
-        Image rendering${}^\star$    &      260 s & 664 & 13 &  6235 &             1 s &            46 s &      \crossmark &      \crossmark \\
-        Scheduler${}^\star$          & \avg   4 s &  59 & 27 &  2115 & \avg       26 s & \avg        4 s & \avg \crossmark & \avg        5 s \\
+        Array                        &         4 s &   38 &  7 &   1806 &             2 s &             2 s &             1 s &             1 s \\
+        Eureka 01                    & \fst   21 s &  741 & 53 &  11462 & \fst \crossmark & \fst \crossmark & \fst \crossmark & \fst    timeout \\
+        TREX 03                      &        45 s & 1497 &  9 &  62384 &      \crossmark &      \crossmark &             1 s &             1 s \\
+        Invert string                & \avg    5 s &  126 & 18 &   2798 & \avg \crossmark & \avg        6 s & \avg \crossmark & \avg        9 s \\
+        Password                     &        59 s &  870 & 19 &  44147 &            23 s &             3 s &      \crossmark &             4 s \\
+        Reverse array                & \avg    5 s &  135 & 18 &   2473 & \avg \crossmark & \avg        3 s & \avg \crossmark & \avg        3 s \\
+        Two indices                  &         4 s &   55 & 15 &   1976 &      \crossmark &             2 s &      \crossmark &             1 s \\
+        Data-flow analysis${}^\star$ & \fst  803 s &  508 & 64 &   8738 & \fst \crossmark & \fst \crossmark & \fst \crossmark & \fst \crossmark \\
+        Cycling race${}^\star$       &         4 s &   87 & 28 &   2160 &             6 s &             3 s &             2 s &             3 s \\
+        Image rendering${}^\star$    &      7209 s & 2018 & 14 & 790119 &      \crossmark &            44 s &      \crossmark &      \crossmark \\
+        Scheduler${}^\star$          & \avg    5 s &  108 & 35 &   2227 & \avg \crossmark & \avg        4 s & \avg \crossmark & \avg        4 s \\
         \end{tabular}
       }
       \vskip2em
