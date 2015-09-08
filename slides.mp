@@ -479,8 +479,8 @@ tiii := image(
   draw siii;
 
   label(btex \tt\large $\text{s}_\text{3}$ etex, (  3u,  0)) withcolor 0.5darkcon;
-  label(btex \tt\large $\text{s}_\text{4}$ etex, (4.5u,  u)) withcolor 0.5darkcoa;
-  label(btex \tt\large $\text{s}_\text{5}$ etex, (4.5u, -u)) withcolor 0.5darkcoa;
+  label(btex \tt\large $\text{s}_\text{5}$ etex, (4.5u,  u)) withcolor 0.5darkcoa;
+  label(btex \tt\large $\text{s}_\text{4}$ etex, (4.5u, -u)) withcolor 0.5darkcoa;
 );
 
 tiv := image(
@@ -540,7 +540,7 @@ tiv := image(
 
   draw siv;
 
-  label(btex \tt\large $\text{s}_\text{4}$ etex, (4.5u, u)) withcolor 0.5darkcon;
+  label(btex \tt\large $\text{s}_\text{5}$ etex, (4.5u, u)) withcolor 0.5darkcon;
 );
 
 tv := image(
@@ -662,7 +662,7 @@ tvi := image(
   draw svi;
 
   label(btex \tt\large $\text{s}_\text{3}'$ etex, (3u, 0)) withcolor 0.5darkcon;
-  label(btex \tt\large $\text{s}_\text{5}$ etex, (4.5u, -u)) withcolor 0.5darkcoa;
+  label(btex \tt\large $\text{s}_\text{4}$ etex, (4.5u, -u)) withcolor 0.5darkcoa;
 );
 
 tvii := image(
@@ -722,7 +722,7 @@ tvii := image(
 
   draw svii;
 
-  label(btex \tt\large $\text{s}_\text{5}$ etex, (4.5u, -u)) withcolor 0.5darkcon;
+  label(btex \tt\large $\text{s}_\text{4}$ etex, (4.5u, -u)) withcolor 0.5darkcon;
 );
 
 t := image(
