@@ -162,32 +162,6 @@
     {\LARGE soundness} {\small thanks to} {\large overapproximation} \\
   }
 
-  \subtitleframe{
-      \small
-      \begin{itemize}
-        \item Depth-first search state space traversal
-        \item Parallel concrete and abstract execution \hfill{\scriptsize\color{darkgray} à la Concolic execution but not quite}\\
-          \begin{itemize}
-            \item \texttt{QF\_AUFLIA}
-          \end{itemize}
-          \vskip0.5em
-          {
-            \scriptsize
-            \begin{tabular}{lll}
-              {\color{darkblue} abstraction} & infeasible traces pruned    & {\color{darkgray} potentially cheaper than refinement} \\
-              {\color{darkorange} concrete}  & coverage of abstract traces & {\color{darkgray} potentially less for fixed abstraction} \\
-            \end{tabular}
-          }
-        \item Lazy abstraction with Nested Interpolants \\
-          \vskip0.5em
-          \scriptsize
-          \begin{tabular}{rl}
-            Q:& \emph{How can there still be infeasible traces?} \\
-            A:& \vtop{To retain soundness, there is non-determinism related to array accesses.\newline Also, there may be more sources of imprecision in future.} \\
-          \end{tabular}
-      \end{itemize}
-  }
-
   \begin{frame}{Concrete state space traversal}
     \begin{columns}[T]
       \begin{column}{0.45\textwidth}
@@ -229,6 +203,32 @@
   \end{frame}
 
   \subtitleframe{
+      \small
+      \begin{itemize}
+        \item Depth-first search state space traversal
+        \item Parallel concrete and abstract execution \hfill{\scriptsize\color{darkgray} à la Concolic execution but not quite}\\
+          \begin{itemize}
+            \item \texttt{QF\_AUFLIA}
+          \end{itemize}
+          \vskip0.5em
+          {
+            \scriptsize
+            \begin{tabular}{lll}
+              {\color{darkblue} abstraction} & infeasible traces pruned    & {\color{darkgray} potentially cheaper than refinement} \\
+              {\color{darkorange} concrete}  & coverage of abstract traces & {\color{darkgray} potentially less for fixed abstraction} \\
+            \end{tabular}
+          }
+        \item Lazy abstraction with Nested Interpolants \\
+          \vskip0.5em
+          \scriptsize
+          \begin{tabular}{rl}
+            Q:& \emph{How can there still be infeasible traces?} \\
+            A:& \vtop{To retain soundness, there is non-determinism related to array accesses.\newline Also, there may be more sources of imprecision in future.} \\
+          \end{tabular}
+      \end{itemize}
+  }
+
+  \subtitleframe{
       \def\cd{\tt\color{black}}
       \def\kw{\bfseries\color{darkblue}}
       \def\succ{\bfseries\color{darkgreen}}
@@ -248,7 +248,7 @@ panda(P, abs) \\
 \ \ \ \ \ \ done: {\succ report safe} \\
 \vskip1em
 unroll(P, abs) \\
-\ \ DFS-search(trans, P, abs) \\
+\ \ DFSearch(trans, P, abs) \\
       \end{column}
       \begin{column}{0.45\textwidth}
 trans(s, a, tr) \\
