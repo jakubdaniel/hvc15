@@ -7,3 +7,6 @@ slides.pdf: %.pdf: %.latex %.mp beamerthemeD3S.sty ArrayMin.java ArrayMinStepByS
 
 present: all
 	@dspdfviewer -a no -f slides.pdf
+
+present-zathura: all
+	@zathura slides.pdf

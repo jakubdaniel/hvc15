@@ -166,9 +166,25 @@
       \small
       \begin{itemize}
         \item Depth-first search state space traversal
-        \item Parallel concrete and abstract execution
-              \hfill{\scriptsize\color{darkgray} à la Concolic execution but not quite}
+        \item Parallel concrete and abstract execution \hfill{\scriptsize\color{darkgray} à la Concolic execution but not quite}\\
+          \begin{itemize}
+            \item \texttt{QF\_AUFLIA}
+          \end{itemize}
+          \vskip0.5em
+          {
+            \scriptsize
+            \begin{tabular}{lll}
+              {\color{darkblue} abstraction} & infeasible traces pruned    & {\color{darkgray} potentially cheaper than refinement} \\
+              {\color{darkorange} concrete}  & coverage of abstract traces & {\color{darkgray} potentially less for fixed abstraction} \\
+            \end{tabular}
+          }
         \item Lazy abstraction with Nested Interpolants \\
+          \vskip0.5em
+          \scriptsize
+          \begin{tabular}{rl}
+            Q:& \emph{How can there still be infeasible traces?} \\
+            A:& \vtop{To retain soundness, there is non-determinism related to array accesses.\newline Also, there may be more sources of imprecision in future.} \\
+          \end{tabular}
       \end{itemize}
   }
 
@@ -211,6 +227,41 @@
       \includegraphics[keepaspectratio,height=0.25cm]{slides4}\hskip1ex Reachable with {\bf coarse} abstraction \\
     }
   \end{frame}
+
+  \subtitleframe{
+      \def\cd{\tt\color{black}}
+      \def\kw{\bfseries\color{darkblue}}
+      \def\succ{\bfseries\color{darkgreen}}
+      \def\fail{\bfseries\color{darkred}}
+      \def\cmmt{\bfseries\color{darkgray}}
+      \scriptsize
+      \raggedright
+      \tt
+      \vskip8em
+      \begin{columns}[T]
+      \begin{column}{0.45\textwidth}
+panda(P, abs) \\
+\ \ {\kw loop} \\
+\ \ \ \ {\kw case} unroll(P, abs) {\kw of} \\
+\ \ \ \ \ \ real cex: {\fail report cex} \\
+\ \ \ \ \ \ spur cex: refine(P, abs) \\
+\ \ \ \ \ \ done: {\succ report safe} \\
+\vskip1em
+unroll(P, abs) \\
+\ \ DFS-search(trans, P, abs) \\
+      \end{column}
+      \begin{column}{0.45\textwidth}
+trans(s, a, tr) \\
+\ \ {\kw let} s' = successor(s, a){\cmmt $^\star$} \\
+\ \ {\kw if} s' {\kw then} {\kw return} (s, a, s') \\
+\ \ {\kw let} M = model(tr + a) \\
+\ \ {\kw if} M {\kw then} add(tr, M) \\
+\ \ {\kw return} end \\
+      \end{column}
+      \end{columns}
+      \vskip8em
+      {\cmmt\sf \begin{tabular}{ll} $^\star$ & \vtop{the set {\cd successor(s, a)} is dynamically updated via {\cd add} with new concrete interpretations of {\cd a} derived from {\cd M}} \end{tabular}}
+  }
 
   \subtitleframe{
       \begin{center}
@@ -268,6 +319,7 @@
   \begin{frame}{Future}
     \begin{itemize}
       \item Optimize
+      \item Get predicates without refinement
       \item Abstract state matching
       \item Concrete trace discontinuities
       \item Data structures / Containers
