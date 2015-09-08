@@ -290,6 +290,7 @@ trans(s, a, tr) \\
   \begin{frame}{HVC'15 Evaluation}
     \def\fst{\cellcolor{orange}}
     \def\avg{\cellcolor{orange!30}}
+    \def\avg{}
     \begin{center}
       \scalebox{0.65}{
         \begin{tabular}{ L || R R R R R R R R }
@@ -298,21 +299,23 @@ trans(s, a, tr) \\
         %\cline{2-5}
         \multicolumn{1}{ c ||}{}                             & \multicolumn{1}{ c }{ $t$ } & \multicolumn{1}{ c }{ $|S|$ } & \multicolumn{1}{ c }{ $|abs|$ } & \multicolumn{1}{ c }{ \#sat } & & & & \\
         \hline
-        Array                        &         4 s &   38 &  7 &   1806 &             2 s &             2 s &             1 s &             1 s \\
-        Eureka 01                    & \fst   21 s &  741 & 53 &  11462 & \fst \crossmark & \fst \crossmark & \fst \crossmark & \fst    timeout \\
-        TREX 03                      &        45 s & 1497 &  9 &  62384 &      \crossmark &      \crossmark &             1 s &             1 s \\
-        Invert string                & \avg    5 s &  126 & 18 &   2798 & \avg \crossmark & \avg        6 s & \avg \crossmark & \avg        9 s \\
-        Password                     &        59 s &  870 & 19 &  44147 &            23 s &             3 s &      \crossmark &             4 s \\
-        Reverse array                & \avg    5 s &  135 & 18 &   2473 & \avg \crossmark & \avg        3 s & \avg \crossmark & \avg        3 s \\
-        Two indices                  &         4 s &   55 & 15 &   1976 &      \crossmark &             2 s &      \crossmark &             1 s \\
-        Data-flow analysis${}^\star$ & \fst  803 s &  508 & 64 &   8738 & \fst \crossmark & \fst \crossmark & \fst \crossmark & \fst \crossmark \\
-        Cycling race${}^\star$       &         4 s &   87 & 28 &   2160 &             6 s &             3 s &             2 s &             3 s \\
-        Image rendering${}^\star$    &      7209 s & 2018 & 14 & 790119 &      \crossmark &            44 s &      \crossmark &      \crossmark \\
-        Scheduler${}^\star$          & \avg    5 s &  108 & 35 &   2227 & \avg \crossmark & \avg        4 s & \avg \crossmark & \avg        4 s \\
+        Array                               &         4 s &    38 &  7 &   1802 &             2 s &             2 s &             1 s &             1 s \\
+        Eureka 01                           & \fst   23 s &   741 & 53 &  11462 & \fst \crossmark & \fst \crossmark & \fst \crossmark & \fst    timeout \\
+        TREX 03                             &        21 s &  1425 &  9 &  14371 &      \crossmark &      \crossmark &             1 s &             1 s \\
+        Invert string                       & \avg    6 s &   126 & 18 &   2728 & \avg \crossmark & \avg        6 s & \avg \crossmark & \avg        9 s \\
+        Password                            &        21 s &   870 & 19 &  12837 &            23 s &             3 s &      \crossmark &             4 s \\
+        Reverse array                       & \avg    5 s &   135 & 18 &   2358 & \avg \crossmark & \avg        3 s & \avg \crossmark & \avg        3 s \\
+        Two indices                         &         4 s &    55 & 15 &   1921 &      \crossmark &             2 s &      \crossmark &             1 s \\
+        Alarm clock${}^\star$               & \fst  949 s & 21200 & 20 &  87628 & \fst \crossmark & \fst \crossmark & \fst \crossmark & \fst \crossmark \\
+        Producer-Consumer${}^\star$         & \multicolumn{4}{ c }{timeout}     &      \crossmark &      \crossmark &      \crossmark &      \crossmark \\
+        Data-flow analysis${}^{\star\star}$ & \fst  377 s &   508 & 64 &   8159 & \fst \crossmark & \fst \crossmark & \fst \crossmark & \fst \crossmark \\
+        Cycling race${}^{\star\star}$       &         5 s &    87 & 28 &   2151 &             6 s &             3 s &             2 s &             3 s \\
+        Image rendering${}^{\star\star}$    & \multicolumn{4}{ c }{timeout}     &      \crossmark &            44 s &      \crossmark &      \crossmark \\
+        Scheduler${}^{\star\star}$          & \avg    5 s &   108 & 35 &   2185 & \avg \crossmark & \avg        4 s & \avg \crossmark & \avg        4 s \\
         \end{tabular}
       }
       \vskip2em
-      {\tiny\sf SVCOMP'14 and our examples (${}^\star$)}
+      {\tiny\sf SVCOMP'14, CTC (${}^\star$) repository, and our examples (${}^{\star\star}$)}
     \end{center}
   \end{frame}
 
