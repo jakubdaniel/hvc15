@@ -28,11 +28,15 @@
   %\titleframe
 
   \subtitleframe{
-      \vskip4em
-      {\Huge{}P\huge{}ANDA} \\
-      \vskip0.5em
-      \large Simultaneous Predicate Abstraction and Concrete Execution
-      \vskip6em
+      \vskip4.5em
+      {\renewcommand{\arraystretch}{0.6}
+      \begin{tabular}{r}
+        \multicolumn{1}{ c }{\Huge{}P\huge{}ANDA} \\
+        \large Simultaneous Predicate Abstraction and Concrete Execution \\
+        \color{darkgray}\small by \it Jakub Daniel
+      \end{tabular}
+      }
+      \vskip2.5em
       \Huge
       \vbox{\tt{}o - o\\\vskip-0.35em(0\_0)}
   }
