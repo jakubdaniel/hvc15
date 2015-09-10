@@ -166,6 +166,7 @@ trans(s, a, tr) \\
         \includegraphics<6>{slides11}
         \includegraphics<7>{slides12}
         \includegraphics<8>{slides13}
+        \includegraphics<9>{slides14}
       \end{center}
   }
 
