@@ -8,8 +8,6 @@
 \usepackage{pifont}
 \usepackage{listings}
 
-\input algorithm
-
 \newcolumntype{L}{>{\vbox\bgroup\vskip0.75ex\hbox\bgroup\hskip0.25ex}l<{\hskip0.25ex\egroup\egroup}}
 \newcolumntype{R}{>{\vbox\bgroup\vskip0.75ex\hbox\bgroup\hskip0.25ex}r<{\hskip0.25ex\egroup\egroup}}
 \newcommand{\crossmark}{\ding{55}}
