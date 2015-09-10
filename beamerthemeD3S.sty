@@ -324,8 +324,8 @@
 }
 
 \setbeamertemplate{frametitle}{%
-  %\vspace{-1cm}%
-  \vspace{0.25cm}%
+  \vspace{-1cm}%
+  %\vspace{0.25cm}%
   \fontsize{16}{1em}\selectfont%
   \shadowoffset{0.75pt}%
   \hskip-\beamer@leftmargin%
@@ -333,15 +333,15 @@
   \shadowtext{\insertframetitle}%
 }
 
-%\setbeamertemplate{headline}{%
-%  {%
-%    \pgfdeclarehorizontalshading{beamer@D3S@headlineshading}{1cm}{color(0cm)=(white); color(0.75\paperwidth)=(white); color(\paperwidth)=(gray!25)}%
-%    \vbox{%
-%      \hbox{\pgfuseshading{beamer@D3S@headlineshading}}%
-%      \includegraphics[width=\paperwidth]{Head}%
-%    }%
-%  }%
-%}
+\setbeamertemplate{headline}{%
+  {%
+    \pgfdeclarehorizontalshading{beamer@D3S@headlineshading}{1cm}{color(0cm)=(white); color(0.75\paperwidth)=(white); color(\paperwidth)=(gray!25)}%
+    \vbox{%
+      \hbox{\pgfuseshading{beamer@D3S@headlineshading}}%
+      \includegraphics[width=\paperwidth]{Head}%
+    }%
+  }%
+}
 
 %\setbeamertemplate{footline}{%
 %  \fboxsep=0pt%

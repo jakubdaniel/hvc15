@@ -17,30 +17,30 @@
 
 \usetheme[footlineauthor]{D3S}
 
-\fancytitle{\vbox{\Huge{}P\huge{}ANDA \\ \large{}Predicate Abstraction in Dynamic Analysis}}
-\runningtitle{PANDA: Predicate Abstraction in Dynamic analysis}
+\fancytitle{\vbox{\Huge{}P\huge{}ANDA \\ \normalsize{}Simultaneous Predicate Abstraction and Concrete Execution}}
+\runningtitle{PANDA: Simultaneous Predicate Abstraction and Concrete Execution}
 
 \author{Jakub Daniel\\Pavel Parizek}
 
 \begin{document}
-  %\titleframe
+  \titleframe
 
-  \subtitleframe{
-      \vskip4.5em
-      {\renewcommand{\arraystretch}{0.6}
-      \begin{tabular}{r}
-        \multicolumn{1}{ c }{\Huge{}P\huge{}ANDA} \\
-        \large Simultaneous Predicate Abstraction and Concrete Execution \\
-        \color{darkgray}\small by \it Jakub Daniel and Pavel Parizek
-      \end{tabular}
-      }
-      \vskip2.5em
-      \Huge
-      \vbox{\tt{}o - o\\\vskip-0.35em(0\_0)}
-  }
+%  \subtitleframe{
+%      \vskip4.5em
+%      {\renewcommand{\arraystretch}{0.6}
+%      \begin{tabular}{r}
+%        \multicolumn{1}{ c }{\Huge{}P\huge{}ANDA} \\
+%        \large Simultaneous Predicate Abstraction and Concrete Execution \\
+%        \color{darkgray}\small by \it Jakub Daniel and Pavel Parizek
+%      \end{tabular}
+%      }
+%      \vskip2.5em
+%      \Huge
+%      \vbox{\tt{}o - o\\\vskip-0.35em(0\_0)}
+%  }
 
   \subtitleframe{%
-    \vskip2.5em
+    %\vskip2.5em
     {\Huge{}P\huge{}ANDA} \scriptsize\\
     {\tiny Pradicate Abstraction in Dynamic Analysis} \\
     \vskip0.5em
@@ -128,7 +128,8 @@
       \scriptsize
       \raggedright
       \tt
-      \vskip8em
+      %\vskip8em
+      \vskip2em
       \begin{columns}[T]
       \begin{column}{0.45\textwidth}
 panda(P, abs) \\
@@ -180,7 +181,7 @@ trans(s, a, tr) \\
     \only<12>{\hbox to \hsize{\hfill{\color{darkgreen}\bfseries{Program Safe}}\hfill}}%
   \end{frame}
 
-  \begin{frame}{HVC'15 Evaluation}
+  \begin{frame}{Evaluation}
     \def\fst{\cellcolor{orange}}
     \def\avg{\cellcolor{orange!30}}
     \def\avg{}
@@ -214,7 +215,7 @@ trans(s, a, tr) \\
 
   \begin{frame}{Future}
     \begin{itemize}
-      \item Optimize
+      \item Optimize implementation
       \item Get predicates without refinement
       \item Abstract state matching
       \item Concrete trace discontinuities
