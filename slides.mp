@@ -341,7 +341,7 @@ svii := image(
   eii := ((1.5u, u) .. (0.5[(1.5u, u),(3u, 0)] + 0.3( u, -1.5u)) .. (3u, 0)) cutbefore (fullcircle scaled (u + 1.5) shifted (1.5u, u)) cutafter (fullcircle scaled (u + 1.5) shifted (3u, 0));
 
   drawarrow ei  withpen pencircle scaled 1.5 withcolor 0.5darkcon + 0.5white;
-  drawarrow eii withpen pencircle scaled 1.5 withcolor darkabs;
+  drawarrow eii withpen pencircle scaled 1.5 withcolor darkcon;
 
   draw edge((3u, 0), (4.5u, u), btex etex, 0.5darkcon + 0.5white);
   draw node((3u, 0), btex etex, 0.5darkcon + 0.5white, 0.5con + 0.5white);

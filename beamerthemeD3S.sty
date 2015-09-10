@@ -298,8 +298,10 @@
 %}
 
 \setbeamertemplate{title page}{%
+  \vspace{2em}%
   \vbox to 1.5cm {%
-    \shadowoffset{0.75pt}\shadowtext{\parbox{\textwidth}{\centering \bf \fontsize{24}{2em}\selectfont \insertfancytitle}}%
+    %\shadowoffset{0.75pt}\shadowtext{\parbox{\textwidth}{\centering \bf \fontsize{24}{2em}\selectfont \insertfancytitle}}%
+    \centering \insertfancytitle%
   }%
   \vspace{2em}%
   \colorbox{gray}{%
@@ -307,18 +309,16 @@
       \bf \fontsize{6}{1em}\selectfont \color{white} http://d3s.mff.cuni.cz%
     }%
   }%
+  \vspace{2em}%
   \begin{columns}[b]%
-    \begin{column}[T]{\dimexpr 0.5\textwidth - 0.75cm\relax}%
+    \begin{column}[c]{\dimexpr 0.5\textwidth - 0.75cm\relax}%
       \includegraphics[width=4cm,keepaspectratio]{D3S} \\%
-      \vspace{0.25cm}%
+    \end{column}%
+    \begin{column}[c]{\dimexpr 0.5\textwidth - 0.75cm\relax}%
       \hspace{1cm} \includegraphics[width=2cm,keepaspectratio]{CUNI} \\%
       \vskip-1ex%
-      \makebox[4cm][c]{\bf \fontfamily{ppl}\fontsize{6}{1em}\selectfont \color{gray} CHARLES UNIVERSITY IN PRAGUE} \\%
+      \makebox[4cm][b]{\bf \fontfamily{ppl}\fontsize{6}{1em}\selectfont \color{gray} CHARLES UNIVERSITY IN PRAGUE} \\%
       \colorbox{gray}{\makebox[4cm][c]{\bf \fontfamily{ppl}\fontsize{6}{1em}\selectfont \color{white} faculty of mathematics and physics}} \\%
-    \end{column}%
-    \begin{column}[T]{\dimexpr 0.5\textwidth - 0.75cm\relax}%
-      \raggedleft \it%
-      \replace{, }{\\}{\insertauthor}%
     \end{column}%
   \end{columns}%
 }

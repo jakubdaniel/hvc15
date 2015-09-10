@@ -17,10 +17,18 @@
 
 \usetheme[footlineauthor]{D3S}
 
-\fancytitle{\vbox{\Huge{}P\huge{}ANDA \\ \normalsize{}Simultaneous Predicate Abstraction and Concrete Execution}}
+\fancytitle{
+      {\renewcommand{\arraystretch}{0.8}%
+      \begin{tabular}{r}%
+        \multicolumn{1}{ c }{\Huge{}P\huge{}ANDA} \\%
+        \large Simultaneous Predicate Abstraction and Concrete Execution \\%
+        \color{darkgray}\small by \it Jakub Daniel and Pavel Parizek%
+      \end{tabular}%
+      }%
+}
 \runningtitle{PANDA: Simultaneous Predicate Abstraction and Concrete Execution}
 
-\author{Jakub Daniel\\Pavel Parizek}
+\author{Jakub Daniel, Pavel Parizek}
 
 \begin{document}
   \titleframe
