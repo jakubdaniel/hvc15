@@ -298,23 +298,23 @@
 %}
 
 \setbeamertemplate{title page}{%
-  \vspace{2em}%
+  \vspace{2.5em}%
   \vbox to 1.5cm {%
     %\shadowoffset{0.75pt}\shadowtext{\parbox{\textwidth}{\centering \bf \fontsize{24}{2em}\selectfont \insertfancytitle}}%
     \centering \insertfancytitle%
   }%
-  \vspace{2em}%
-  \colorbox{gray}{%
-    \makebox[\textwidth][l]{%
-      \bf \fontsize{6}{1em}\selectfont \color{white} http://d3s.mff.cuni.cz%
-    }%
-  }%
-  \vspace{2em}%
+  \vspace{3.5em}%
+  %\colorbox{gray}{%
+  %  \makebox[\textwidth][l]{%
+  %    \bf \fontsize{6}{1em}\selectfont \color{white} http://d3s.mff.cuni.cz%
+  %  }%
+  %}%
+  %\vspace{2em}%
   \begin{columns}[b]%
-    \begin{column}[c]{\dimexpr 0.5\textwidth - 0.75cm\relax}%
-      \includegraphics[width=4cm,keepaspectratio]{D3S} \\%
+    \begin{column}[b]{\dimexpr 0.5\textwidth - 0.75cm\relax}%
+      \raisebox{-6.8pt}{\includegraphics[width=4cm,keepaspectratio]{D3S}} \\%
     \end{column}%
-    \begin{column}[c]{\dimexpr 0.5\textwidth - 0.75cm\relax}%
+    \begin{column}[b]{\dimexpr 0.5\textwidth - 0.75cm\relax}%
       \hspace{1cm} \includegraphics[width=2cm,keepaspectratio]{CUNI} \\%
       \vskip-1ex%
       \makebox[4cm][b]{\bf \fontfamily{ppl}\fontsize{6}{1em}\selectfont \color{gray} CHARLES UNIVERSITY IN PRAGUE} \\%
