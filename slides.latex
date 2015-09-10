@@ -22,7 +22,7 @@
 \fancytitle{\vbox{\Huge{}P\huge{}ANDA \\ \large{}Predicate Abstraction in Dynamic Analysis}}
 \runningtitle{PANDA: Predicate Abstraction in Dynamic analysis}
 
-\author{Jakub Daniel}
+\author{Jakub Daniel\\Pavel Parizek}
 
 \begin{document}
   %\titleframe
@@ -33,7 +33,7 @@
       \begin{tabular}{r}
         \multicolumn{1}{ c }{\Huge{}P\huge{}ANDA} \\
         \large Simultaneous Predicate Abstraction and Concrete Execution \\
-        \color{darkgray}\small by \it Jakub Daniel
+        \color{darkgray}\small by \it Jakub Daniel and Pavel Parizek
       \end{tabular}
       }
       \vskip2.5em
@@ -41,117 +41,6 @@
       \vbox{\tt{}o - o\\\vskip-0.35em(0\_0)}
   }
 
-  \subtitleframe{
-      \ldots but first \ldots
-  }
-
-  \subtitleframe{
-      Charles University \\
-      \scriptsize since 1348, Prague, Czech Republic \\
-      \vskip1em
-      \small
-      $$
-      \begin{array}{rlcc}
-        17 & \text{Faculties}   &\ni& \text{Faculty of Mathematics and Physics} \\
-         3 & \text{Schools}     &\ni& \text{School of Computer Science} \\
-         8 & \text{Departments} &\ni& \text{Department of Distributed and Dependable Systems} \\
-       \\
-         3 & \text{Groups}      &\ni& \text{Component Group} \\
-           &                    &\ni& \text{Systems Group} \\
-           &                    &\ni& \textbf{Formal Methods Group} \\
-      \end{array}
-      $$
-  }
-
-  \subtitleframe{
-      Component Group \\
-      \vskip0.5em
-      \small Currently focusing on Cyber-Physical Systems
-  }
-
-  \subtitleframe{\Large Dependable Emergent Ensembles of Components (DEECo) \\
-      \small
-      \begin{itemize}
-        \item design of systems of autonomous, self-aware, and adaptable components
-        \item implicitly organized in groups called ensembles
-        \item dynamic environment (components enter/exit ensembles at any time)
-        \item car parking, firefighters
-        \item \url{https://github.com/d3scomp} - CDEECo, JDEECo, IRM
-        \item \scriptsize Bures et al. DEECo - an Ensemble-Based Component System. CBSE'13\\
-      \end{itemize}
-  }
-
-  \subtitleframe{
-      Systems Group \\
-      \vskip0.5em
-      \small Performance
-  }
-  \subtitleframe{\Large Garbage Collector Performance \\
-      \small
-      \begin{itemize}
-        \item {\scriptsize Libic et al. Estimating the Impact of Code Additions on GC Overhead. EPEW'15}\\
-        \item {\scriptsize Libic et al. On The Limits of Modeling Generational GC Performance. ICPE'14}\\
-      \end{itemize}
-  }
-  \subtitleframe{\Large Performance Unit Tests \\ \small Stochastic Performance Logic \\
-      \vskip0.5em
-      \begin{itemize}
-        \item \url{http://sourceforge.net/projects/spl-tools/}
-        \item {\scriptsize Horky et al. Utilizing Performance Unit Tests To Increase Performance Awareness. ICPE'15}\\
-        \item {\scriptsize Bulej et al. Capturing Performance Assumptions using SPL. ICPE'12}\\
-      \end{itemize}
-      \lstinputlisting[basicstyle=\scriptsize\tt,language=Java]{SPL.java}
-  }
-  \subtitleframe{\Large Domain-Specific Language for Bytecode Instrumentation \\
-      \small
-      \begin{itemize}
-        \item ShadowVM
-          \begin{itemize}
-            \item isolation
-            \item full coverage
-            \item dynamic analysis via instrumentation
-          \end{itemize}
-        \item {\scriptsize Marek et al. ShadowVM: Robust and Comprehensive Dynamic Program Analysis for Java Platform. GPCE'13}\\
-        \item {\scriptsize Marek et al. DiSL: Domain-Specific Language for Bytecode Instrumentation. AOSD'12}\\
-      \end{itemize}
-  }
-
-  \subtitleframe{Formal Methods Group}
-  \subtitleframe{\Large Weverca \\
-      \small
-      \begin{itemize}
-        \item PHP static analyzer
-        \item Live Demo \url{http://perun.ms.mff.cuni.cz/weverca}
-        \item \scriptsize Hauzar, Kofron. Framework for Static Analysis of PHP Applications. ECOOP'15\\
-      \end{itemize}
-  }
-  \subtitleframe{\Large Partial Variable Assignment Interpolants \\
-      \small
-      \begin{itemize}
-        \item Propositional DAG interpolation
-        \item {\scriptsize Jancik et al. On Interpolants and Variable Assignments. FMCAD'14}\\
-      \end{itemize}
-  }
-  \subtitleframe{\Large Partial State Matching \\
-      \small
-      \begin{itemize}
-        \item Parts of state relevant for future behaviour
-            \begin{itemize}
-              \item Different for every point
-              \item Variables and fields read before being overwritten
-            \end{itemize}
-        \item Match relevant parts only
-      \end{itemize}
-  }
-  \subtitleframe{\Large Improving Partial Order Reduction \\
-      \small
-      combination of static and dynamic analysis
-      \vskip0.5em
-      \begin{itemize}
-        \item {\scriptsize Parizek, Lhotak. Identifying Future Field Accesses in Exhaustive State Space Traversal. ASE'11}\\
-        \item {\scriptsize Parizek, Jancik. Approximating Happens-Before Order: Interplay between Static Analysis and State Space Traversal. SPIN'14}\\
-      \end{itemize}
-  }
   \subtitleframe{%
     \vskip2.5em
     {\Huge{}P\huge{}ANDA} \scriptsize\\
@@ -276,6 +165,7 @@ trans(s, a, tr) \\
         \includegraphics<5>{slides10}
         \includegraphics<6>{slides11}
         \includegraphics<7>{slides12}
+        \includegraphics<8>{slides13}
       \end{center}
   }
 

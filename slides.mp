@@ -281,8 +281,8 @@ beginfig(5)
   draw node((0, 0), btex etex, darkcon, con);
 endfig;
 
-picture s, si, sii, siii, siv, tv, tvi, tvii;
-picture t, ti, tii, tiii, tiv, sv, svi, svii;
+picture s, si, sii, siii, siv, tv, tvi, tvii, tviii;
+picture t, ti, tii, tiii, tiv, sv, svi, svii, sviii;
 
 si := image(
   draw node((0, 0), btex etex, darkcon, con);
@@ -301,12 +301,25 @@ siii := image(
 );
 
 siv := image(
+  path ei, eii;
+
+  ei  := (1.5u, u) .. (0.5[(1.5u, u),(3u, 0)] + 0.3(-u,  1.5u)) .. (3u, 0);
+  eii := (1.5u, u) .. (0.5[(1.5u, u),(3u, 0)] + 0.3( u, -1.5u)) .. (3u, 0);
+
+  drawarrow ei  cutbefore (fullcircle scaled (u + 1.5) shifted (1.5u, u)) cutafter (fullcircle scaled (u + 1.5) shifted (3u, 0)) withpen pencircle scaled 1.5 withcolor darkcon;
+  drawarrow eii cutbefore (fullcircle scaled (u + 1.5) shifted (1.5u, u)) cutafter (fullcircle scaled (u + 1.5) shifted (3u, 0)) withpen pencircle scaled 1.5 withcolor darkabs;
+
+  draw node((3u, 0), btex etex, darkcon, con);
+  draw sii;
+);
+
+sv := image(
   draw edge((3u, 0), (4.5u, u), btex etex, darkcon);
   draw node((4.5u, u), btex etex, darkcon, con);
   draw siii;
 );
 
-sv := image(
+svi := image(
   draw edge((1.5u, u), (3u, 0), btex etex, 0.5darkcon + 0.5white);
   draw edge((3u, 0), (4.5u, u), btex etex, 0.5darkcon + 0.5white);
   draw node((3u, 0), btex etex, 0.5darkcon + 0.5white, 0.5con + 0.5white);
@@ -314,13 +327,13 @@ sv := image(
   draw sii;
 );
 
-svi := image(
+svii := image(
   draw edge((3u, 0), (4.5u, u), btex etex, 0.5darkcon + 0.5white);
   draw node((4.5u, u), btex etex, 0.5darkcon + 0.5white, 0.5con + 0.5white);
   draw siii;
 );
 
-svii := image(
+sviii := image(
   draw svi;
 );
 
@@ -502,7 +515,7 @@ tiv := image(
   envelopei   :=  envelopei   rotated  angle (1.5u, u);
   envelopeii  := (envelopeii  rotated -angle (1.5u, u)) shifted (1.5u,  u);
   envelopeiii := (1.5u, -0.25u) rotatedaround ((1.5u, u), 0.125 angle (1.5u, -u));
-  envelopeiv  := (0.5[(3u, 2u), (4.5u, u)] rotatedaround ((3u, 2u), -angle (1.5u, u)) + (1.5u, u)) -- 0.5[(3u, 2u), (4.5u, u)] rotatedaround ((3u, 2u), -angle (1.5u, u));
+  envelopeiv  := 0.5[(3u, 2u), (4.5u, u)] rotatedaround ((3u, 2u), -angle (1.5u, u));
   envelopev   := (3u, -u) .. (3u, -u) + 0.125(1.5u, -u);
 
   envelope := envelopeiv {dir 210} .. envelopeii .. envelopei .. envelopeiii .. {dir angle (1.5u, -u)}envelopev;
@@ -521,26 +534,26 @@ tiv := image(
   enter := angle direction 0 of envelope;
   leave := angle direction length(envelope) of envelope;
 
-  path arc;
-
-  arc := yii {dir angle (1.5u, u)} .. {right}(4.5u, 0.25u){right}..{up}(4.5u + 0.75u, u){up} .. xii;
-
-  fill (xii {dir (180 + angle (1.5u, u))} .. envelope .. yii) -- arc -- cycle withcolor 0.5abs + 0.5white;
+  fill (xii {dir (180 + angle (1.5u, u))} .. envelope .. yii) -- cycle withcolor 0.5abs + 0.5white;
   drawarrow xi{dir (180 + enter)} .. {dir angle (1.5u, u)} xii -- xiii withpen pencircle scaled 1.5 withcolor darkabs dashed evenly;
   drawarrow yi{dir        leave } .. yii -- yiii withpen pencircle scaled 1.5 withcolor darkabs dashed evenly;
   draw envelope withpen pencircle scaled 1.5 withcolor darkabs;
 
   draw edge((0, 0), (1.5u, -u), btex etex, 0.5darkcoa + 0.5white);
   draw edge((1.5u, u), (3u, 2u), btex etex, 0.5darkcoa + 0.5white);
+  draw edge((3u, 0), (4.5u,  u), btex etex, darkcon);
   draw edge((3u, 0), (4.5u, -u), btex etex, darkabs);
 
   draw node((1.5u, -u), btex etex, 0.5darkcoa + 0.5white, 0.5coa + 0.5white);
   draw node((3u, 2u), btex etex, 0.5darkcoa + 0.5white, 0.5coa + 0.5white);
+  draw node((4.5u,  u), btex etex, darkcoa, coa);
   draw node((4.5u, -u), btex etex, darkcoa, coa);
 
   draw siv;
 
-  label(btex \tt\large $\text{s}_\text{5}$ etex, (4.5u, u)) withcolor 0.5darkcon;
+  label(btex \tt\large $\text{s}_\text{3}$ etex, (  3u,  0)) withcolor 0.5darkcon;
+  label(btex \tt\large $\text{s}_\text{5}$ etex, (4.5u,  u)) withcolor 0.5darkcoa;
+  label(btex \tt\large $\text{s}_\text{4}$ etex, (4.5u, -u)) withcolor 0.5darkcoa;
 );
 
 tv := image(
@@ -600,11 +613,71 @@ tv := image(
 
   draw sv;
 
+  label(btex \tt\large $\text{s}_\text{5}$ etex, (4.5u, u)) withcolor 0.5darkcon;
+);
+
+tvi := image(
+  pair xi, xii, xiii, yi, yii, yiii;
+  path envelope, envelopei, envelopeii, envelopeiii, envelopeiv, envelopev;
+
+  envelopei   := (fullcircle scaled 2u);
+  xi := point length(envelopei) / 4 of envelopei;
+  yi := point length(envelopei) - length(envelopei) / 4 of envelopei;
+
+  envelopei   := envelopei cutbefore xi cutafter yi;
+
+  envelopeii  := (fullcircle scaled 2u);
+  xi :=  point length(envelopeii) / 4 of envelopeii;
+  yi := (point length(envelopeii) / 2 of envelopeii) rotated -angle (1.5u, u);
+
+  envelopeii  := envelopeii cutbefore xi cutafter yi;
+
+  envelopei   :=  envelopei   rotated  angle (1.5u, u);
+  envelopeii  := (envelopeii  rotated -angle (1.5u, u)) shifted (1.5u,  u);
+  envelopeiii := (1.5u, -0.25u) rotatedaround ((1.5u, u), 0.125 angle (1.5u, -u));
+  envelopeiv  := (0.5[(3u, 2u), (4.5u, u)] rotatedaround ((3u, 2u), -angle (1.5u, u)) + (1.5u, u)) -- 0.5[(3u, 2u), (4.5u, u)] rotatedaround ((3u, 2u), -angle (1.5u, u));
+  envelopev   := (3u, -u) .. (3u, -u) + 0.125(1.5u, -u);
+
+  envelope := envelopeiv {dir 210} .. envelopeii .. envelopei .. envelopeiii .. {dir angle (1.5u, -u)}envelopev;
+
+  xi := point 0 of envelope;
+  yi := point length(envelope) of envelope;
+
+  xii  := xi + 0.25(1.5u, u);
+  xiii := xii + 0.125(1.5u, u);
+
+  yii  := yi + 0.25(1.5u, -u);
+  yiii := yii + 0.125(1.5u, -u);
+
+  numeric enter, leave;
+
+  enter := angle direction 0 of envelope;
+  leave := angle direction length(envelope) of envelope;
+
+  path arc;
+
+  arc := yii {dir angle (1.5u, u)} .. {right}(4.5u, 0.25u){right}..{up}(4.5u + 0.75u, u){up} .. xii;
+
+  fill (xii {dir (180 + angle (1.5u, u))} .. envelope .. yii) -- arc -- cycle withcolor 0.5abs + 0.5white;
+  drawarrow xi{dir (180 + enter)} .. {dir angle (1.5u, u)} xii -- xiii withpen pencircle scaled 1.5 withcolor darkabs dashed evenly;
+  drawarrow yi{dir        leave } .. yii -- yiii withpen pencircle scaled 1.5 withcolor darkabs dashed evenly;
+  draw envelope withpen pencircle scaled 1.5 withcolor darkabs;
+
+  draw edge((0, 0), (1.5u, -u), btex etex, 0.5darkcoa + 0.5white);
+  draw edge((1.5u, u), (3u, 2u), btex etex, 0.5darkcoa + 0.5white);
+  draw edge((3u, 0), (4.5u, -u), btex etex, darkabs);
+
+  draw node((1.5u, -u), btex etex, 0.5darkcoa + 0.5white, 0.5coa + 0.5white);
+  draw node((3u, 2u), btex etex, 0.5darkcoa + 0.5white, 0.5coa + 0.5white);
+  draw node((4.5u, -u), btex etex, darkcoa, coa);
+
+  draw svi;
+
   label(btex \tt\large $\text{s}_\text{2}$ etex, (1.5u, u)) withcolor 0.5darkcon;
   label(btex \tt\large $\text{s}_\text{3}'$ etex, (3u, 0)) withcolor 0.25darkcon + 0.5white;
 );
 
-tvi := image(
+tvii := image(
   pair xi, xii, xiii, yi, yii, yiii;
   path envelope, envelopei, envelopeii, envelopeiii, envelopeiv, envelopev;
 
@@ -659,13 +732,13 @@ tvi := image(
   draw node((3u, 2u), btex etex, 0.5darkcoa + 0.5white, 0.5coa + 0.5white);
   draw node((4.5u, -u), btex etex, darkcoa, coa);
 
-  draw svi;
+  draw svii;
 
   label(btex \tt\large $\text{s}_\text{3}'$ etex, (3u, 0)) withcolor 0.5darkcon;
   label(btex \tt\large $\text{s}_\text{4}$ etex, (4.5u, -u)) withcolor 0.5darkcoa;
 );
 
-tvii := image(
+tviii := image(
   pair xi, xii, xiii, yi, yii, yiii;
   path envelope, envelopei, envelopeii, envelopeiii, envelopeiv, envelopev;
 
@@ -720,7 +793,7 @@ tvii := image(
   draw node((3u, 2u), btex etex, 0.5darkcoa + 0.5white, 0.5coa + 0.5white);
   draw node((4.5u, -u), btex etex, darkcon, con);
 
-  draw svii;
+  draw sviii;
 
   label(btex \tt\large $\text{s}_\text{4}$ etex, (4.5u, -u)) withcolor 0.5darkcon;
 );
@@ -733,6 +806,7 @@ t := image(
   draw tv;
   draw tvi;
   draw tvii;
+  draw tviii;
 );
 
 beginfig(6)
@@ -773,6 +847,12 @@ endfig;
 
 beginfig(12)
   draw tvii;
+
+  setbounds currentpicture to bbox(t);
+endfig;
+
+beginfig(13)
+  draw tviii;
 
   setbounds currentpicture to bbox(t);
 endfig;
