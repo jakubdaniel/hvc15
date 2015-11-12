@@ -18,11 +18,11 @@
 \usetheme[footlineauthor]{D3S}
 
 \fancytitle{
-      {\renewcommand{\arraystretch}{0.8}%
+      {\renewcommand{\arraystretch}{1.2}%
       \begin{tabular}{r}%
-        \multicolumn{1}{ c }{\Huge{}P\huge{}ANDA} \\%
+        \multicolumn{1}{ c }{\bfseries\Huge{}P\huge{}ANDA} \\%
         \large Simultaneous Predicate Abstraction and Concrete Execution \\%
-        \color{darkgray}\small by \it Jakub Daniel and Pavel Parizek%
+        \color{darkgray}\small by \it {\bfseries Jakub Daniel} and Pavel Parizek%
       \end{tabular}%
       }%
 }
@@ -54,11 +54,11 @@
     \vskip0.5em
     {\small\color{darkgray}\url{https://github.com/d3sformal/panda}} \small\\
     {\scriptsize{}based on \color{darkgray}\url{http://babelfish.arc.nasa.gov/trac/jpf}} \\
-    \vskip2em
-    \color{darkgray}
-    \huge dynamic analysis \hbox to 3.5cm{\hsize=3.5cm\vbox{\small concrete execution \\ predicate abstraction}} \\
-    {\large concrete underapproximation} {\small gives} {\LARGE precision} \\
-    {\LARGE soundness} {\small thanks to} {\large overapproximation} \\
+    %\vskip2em
+    %\color{darkgray}
+    %\LARGE dynamic analysis \hbox to 5cm{\hsize=5cm\vbox{\small concrete execution \\ \Large predicate abstraction}} \\
+    %{\large concrete underapproximation} {\small gives} {\LARGE precision} \\
+    %{\LARGE soundness} {\small thanks to} {\large overapproximation} \\
   }
 
   \begin{frame}{Concrete state space traversal}
@@ -104,6 +104,7 @@
   \subtitleframe{
       \small
       \begin{itemize}
+        \itemsep=2em
         \item Depth-first search state space traversal
         \item Parallel concrete and abstract execution \hfill{\scriptsize\color{darkgray} à la Concolic execution but not quite}\\
           \begin{itemize}
@@ -163,7 +164,8 @@ trans(s, a, tr) \\
       {\cmmt\sf \begin{tabular}{ll} $^\star$ & \vtop{the set {\cd successor(s, a)} is dynamically updated via {\cd add} with new concrete interpretations of {\cd a} derived from {\cd M}} \end{tabular}}
   }
 
-  \subtitleframe{
+  \subtitleframe{\small Simultaneous Traversal --- Concrete and Abstract
+      \vskip2em
       \begin{center}
         \includegraphics<1>{slides6}
         \includegraphics<2>{slides7}
@@ -175,6 +177,7 @@ trans(s, a, tr) \\
         \includegraphics<8>{slides13}
         \includegraphics<9>{slides14}
       \end{center}
+      \vskip2em
   }
 
   \begin{frame}{Example Program}
@@ -205,13 +208,13 @@ trans(s, a, tr) \\
         Eureka 01                           & \fst   23 s &   741 & 53 &  11462 & \fst \crossmark & \fst \crossmark & \fst \crossmark & \fst    timeout \\
         TREX 03                             &        21 s &  1425 &  9 &  14371 &      \crossmark &      \crossmark &             1 s &             1 s \\
         Invert string                       & \avg    6 s &   126 & 18 &   2728 & \avg \crossmark & \avg        6 s & \avg \crossmark & \avg        9 s \\
-        Password                            &        21 s &   870 & 19 &  12837 &            23 s &             3 s &      \crossmark &             4 s \\
+        Password                            &        22 s &   870 & 19 &  12837 &            23 s &             3 s &      \crossmark &             4 s \\
         Reverse array                       & \avg    5 s &   135 & 18 &   2358 & \avg \crossmark & \avg        3 s & \avg \crossmark & \avg        3 s \\
         Two indices                         &         4 s &    55 & 15 &   1921 &      \crossmark &             2 s &      \crossmark &             1 s \\
-        Alarm clock${}^\star$               & \fst  949 s & 21200 & 20 &  87628 & \fst \crossmark & \fst \crossmark & \fst \crossmark & \fst \crossmark \\
+        Alarm clock${}^\star$               & \fst  970 s & 21200 & 20 &  87628 & \fst \crossmark & \fst \crossmark & \fst \crossmark & \fst \crossmark \\
         Producer-Consumer${}^\star$         & \multicolumn{4}{ c }{timeout}     &      \crossmark &      \crossmark &      \crossmark &      \crossmark \\
-        Data-flow analysis${}^{\star\star}$ & \fst  377 s &   508 & 64 &   8159 & \fst \crossmark & \fst \crossmark & \fst \crossmark & \fst \crossmark \\
-        Cycling race${}^{\star\star}$       &         5 s &    87 & 28 &   2151 &             6 s &             3 s &             2 s &             3 s \\
+        Data-flow analysis${}^{\star\star}$ & \fst  379 s &   508 & 64 &   8159 & \fst \crossmark & \fst \crossmark & \fst \crossmark & \fst \crossmark \\
+        Cycling race${}^{\star\star}$       &         5 s &    87 & 28 &   2151 &             6 s &             3 s &             2 s &             2 s \\
         Image rendering${}^{\star\star}$    & \multicolumn{4}{ c }{timeout}     &      \crossmark &            44 s &      \crossmark &      \crossmark \\
         Scheduler${}^{\star\star}$          & \avg    5 s &   108 & 35 &   2185 & \avg \crossmark & \avg        4 s & \avg \crossmark & \avg        4 s \\
         \end{tabular}
@@ -224,6 +227,8 @@ trans(s, a, tr) \\
   \begin{frame}{Future}
     \begin{itemize}
       \item Optimize implementation
+      \item Thorough evaluation
+      \item Eager predicate discovery
       \item Get predicates without refinement
       \item Abstract state matching
       \item Concrete trace discontinuities
