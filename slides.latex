@@ -50,7 +50,7 @@
   \subtitleframe{%
     %\vskip2.5em
     {\Huge{}P\huge{}ANDA} \scriptsize\\
-    {\tiny Pradicate Abstraction in Dynamic Analysis} \\
+    {\tiny Predicate Abstraction in Dynamic Analysis} \\
     \vskip0.5em
     {\small\color{darkgray}\url{https://github.com/d3sformal/panda}} \small\\
     {\scriptsize{}based on \color{darkgray}\url{http://babelfish.arc.nasa.gov/trac/jpf}} \\
@@ -165,7 +165,7 @@ trans(s, a, tr) \\
   }
 
   \subtitleframe{\small Simultaneous Traversal --- Concrete and Abstract
-      \vskip2em
+      \vskip4em
       \begin{center}
         \includegraphics<1>{slides6}
         \includegraphics<2>{slides7}
@@ -177,7 +177,7 @@ trans(s, a, tr) \\
         \includegraphics<8>{slides13}
         \includegraphics<9>{slides14}
       \end{center}
-      \vskip2em
+      \vskip4em
   }
 
   \begin{frame}{Example Program}
