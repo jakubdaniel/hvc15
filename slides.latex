@@ -106,11 +106,12 @@
       \begin{itemize}
         \itemsep=2em
         \item Depth-first search state space traversal
-        \item Parallel concrete and abstract execution \hfill{\scriptsize\color{darkgray} à la Concolic execution but not quite}\\
-          \begin{itemize}
-            \item \texttt{QF\_AUFLIA}
-          \end{itemize}
-          \vskip0.5em
+        \item Simultaneous concrete and abstract execution\\
+        \hskip12em{\scriptsize\color{darkgray} à la Concolic execution but not quite}\\
+          %\begin{itemize}
+          %  \item \texttt{QF\_AUFLIA}
+          %\end{itemize}
+          \vskip2em
           {
             \scriptsize
             \begin{tabular}{lll}
@@ -118,7 +119,7 @@
               {\color{darkorange} concrete}  & coverage of abstract traces & {\color{darkgray} potentially less for fixed abstraction} \\
             \end{tabular}
           }
-        \item Lazy abstraction with Nested Interpolants \\
+        \item Refinement: Lazy abstraction with Nested Interpolants \\
           \vskip0.5em
           \scriptsize
           \begin{tabular}{rl}
@@ -164,8 +165,10 @@ trans(s, a, tr) \\
       {\cmmt\sf \begin{tabular}{ll} $^\star$ & \vtop{the set {\cd successor(s, a)} is dynamically updated via {\cd add} with new concrete interpretations of {\cd a} derived from {\cd M}} \end{tabular}}
   }
 
-  \subtitleframe{\small Simultaneous Traversal --- Concrete and Abstract
-      \vskip4em
+  \subtitleframe{
+      \vskip-1.5em
+      \small Simultaneous Traversal --- Concrete and Abstract
+      \vskip5.5em
       \begin{center}
         \includegraphics<1>{slides6}
         \includegraphics<2>{slides7}
@@ -226,15 +229,27 @@ trans(s, a, tr) \\
 
   \begin{frame}{Future}
     \begin{itemize}
-      \item Optimize implementation
+      \item {\color{darkred} Optimize implementation}
       \item Thorough evaluation
       \item Eager predicate discovery
       \item Get predicates without refinement
-      \item Abstract state matching
+      \item {\color{darkred} Abstract state matching}
       \item Concrete trace discontinuities
-      \item Data structures / Containers
+      \item {\color{darkred} Data structures / Containers}
       \item Concurrency
     \end{itemize}
+  \end{frame}
+
+  \begin{frame}{\Large P\large ANDA: Predicate Abstraction in Dynamic Analysis}
+    \begin{itemize}
+      \item Simultaneous traversal --- concrete \& abstract
+      \item Dynamic pruning of infeasible traces
+    \end{itemize}
+
+    \vskip6em
+    \begin{center}
+        {\bfseries\color{darkred}\url{https://github.com/d3sformal/panda}}
+    \end{center}
   \end{frame}
 
   %\subtitleframe{\raisebox{-0.5\height}{\includegraphics[width=8cm]{kunfupanda.jpg}}Questions?}
